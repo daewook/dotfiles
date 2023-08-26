@@ -1,4 +1,4 @@
-# chatgpt4 wrote this for me :)
+# chatgpt4 wrote most this for me :)
 
 import os
 
@@ -9,10 +9,11 @@ def create_symlinks(folder_path):
     # Get the absolute path of the home directory
     home_dir = os.path.expanduser('~')
 
-    for file in dotfiles:
+    for filename in dotfiles:
+        assert filename.startswith('_')
         # Construct the source and destination paths
-        source_path = os.path.join(folder_path, file)
-        destination_path = os.path.join(home_dir, '.' + file)
+        source_path = os.path.join(folder_path, filename)
+        destination_path = os.path.join(home_dir, '.' + filename[1:])
 
         # Create the symbolic link
         os.symlink(source_path, destination_path)
