@@ -1,0 +1,77 @@
+anything to fix on this tmux conf?
+---
+set-option -g renumber-windows on
+set -g base-index 1
+setw -g pane-base-index 1
+set -s escape-time -0
+set -g default-terminal "screen-256color"
+set -g history-limit 30000
+setw -g mode-keys vi
+set -g set-titles on
+set -g set-titles-string "#S • #W"
+set-option -g allow-rename off
+# set-window-option -g window-status-current-bg blue
+set-window-option -g window-status-current-style bg=blue
+set-window-option -g clock-mode-style 12
+set -s set-clipboard on
+
+bind '%' split-window -h -c '#{pane_current_path}'
+bind '"' split-window -v -c '#{pane_current_path}'
+bind c new-window -a -c '#{pane_current_path}'
+
+set-option -g status-position top
+
+set -g status-bg black
+set -g status-fg white
+
+set-option -g status-justify centre
+
+set -g status-left-length 50
+set-option -g status-left '#[bg=black,fg=green][#[fg=cyan]#S#[fg=green]]'
+
+setw -g automatic-rename on
+set-window-option -g window-status-format '#[dim]#I:#[default]#W#[fg=grey,dim]'
+set-window-option -g window-status-current-format '#[fg=cyan]#W#[fg=dim]'
+
+set -g status-right '#[fg=green][#[fg=cyan]%Y%m%d#[fg=green]]'
+
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'set-option -g renumber-windows on
+set -g base-index 1
+setw -g pane-base-index 1
+set -s escape-time -0
+set -g default-terminal "screen-256color"
+set -g history-limit 30000
+setw -g mode-keys vi
+set -g set-titles on
+set -g set-titles-string "#S • #W"
+set-option -g allow-rename off
+# set-window-option -g window-status-current-bg blue
+set-window-option -g window-status-current-style bg=blue
+set-window-option -g clock-mode-style 12
+set -s set-clipboard on
+
+bind '%' split-window -h -c '#{pane_current_path}'
+bind '"' split-window -v -c '#{pane_current_path}'
+bind c new-window -a -c '#{pane_current_path}'
+
+set-option -g status-position top
+
+set -g status-bg black
+set -g status-fg white
+
+set-option -g status-justify centre
+
+set -g status-left-length 50
+set-option -g status-left '#[bg=black,fg=green][#[fg=cyan]#S#[fg=green]]'
+
+setw -g automatic-rename on
+set-window-option -g window-status-format '#[dim]#I:#[default]#W#[fg=grey,dim]'
+set-window-option -g window-status-current-format '#[fg=cyan]#W#[fg=dim]'
+
+set -g status-right '#[fg=green][#[fg=cyan]%Y%m%d#[fg=green]]'
+
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
