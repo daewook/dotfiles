@@ -7,3 +7,8 @@ fi
 
 # Override the Bash-specific reload alias.
 alias reload='source ~/.zshrc'
+
+# Enable colored output for macOS ls.
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias ls='ls -G'
+fi
