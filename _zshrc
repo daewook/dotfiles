@@ -12,3 +12,6 @@ alias reload='source ~/.zshrc'
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ls='ls -G'
 fi
+
+# Match the Bash-style prompt: green user@host, blue working directory, then $.
+PROMPT='%B%F{green}%n@%m%f%b:%B%F{blue}%~%f%b$ '
