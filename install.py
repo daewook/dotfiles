@@ -1,10 +1,12 @@
 # chatgpt4 wrote most this for me :)
 
 import os, shutil
+import sys
 
 def create_symlinks(folder_path):
     # List of files for which to create symlinks
-    dotfiles = ['_vimrc', '_bashrc', '_bash_aliases']
+    shell_config = '_zshrc' if sys.platform == 'darwin' else '_bashrc'
+    dotfiles = ['_vimrc', shell_config, '_bash_aliases']
 
     # Get the absolute path of the home directory
     home_dir = os.path.expanduser('~')

@@ -1,0 +1,9 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Reuse the aliases shared with Bash.
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
+
+# Override the Bash-specific reload alias.
+alias reload='source ~/.zshrc'
