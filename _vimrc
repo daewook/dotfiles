@@ -16,8 +16,10 @@ set synmaxcol=6000 "for syntax highlighting on long lines
 
 "remove trailing whitespaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s/+$//e<Bar>:let @/=_s<Bar><CR>
-" \c copies the visual selection to the system clipboard
-vnoremap <leader>c "+y
+" \c: copy the visual selection to the macOS clipboard
+vnoremap <leader>c y:call system('pbcopy', @")<CR>
+" \c in normal mode: copy the current line
+nnoremap <leader>c yy:call system('pbcopy', @")<CR>
 
 
 call plug#begin('~/.vim/plugged')
