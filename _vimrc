@@ -16,6 +16,9 @@ set synmaxcol=6000 "for syntax highlighting on long lines
 
 "remove trailing whitespaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s/+$//e<Bar>:let @/=_s<Bar><CR>
+" \c copies the visual selection to the system clipboard
+vnoremap <leader>c "+y
+
 
 call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
