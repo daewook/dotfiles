@@ -16,10 +16,21 @@ set synmaxcol=6000 "for syntax highlighting on long lines
 
 "remove trailing whitespaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s/+$//e<Bar>:let @/=_s<Bar><CR>
-" \c: copy the visual selection to the macOS clipboard
-vnoremap <leader>c y:call system('pbcopy', @")<CR>
+" Copy text to the local clipboard. Uses pbcopy on a local Mac; over SSH (or
+" without pbcopy) sends an OSC 52 escape so the terminal sets the clipboard.
+function! CopyToClipboard(text)
+  if executable('pbcopy') && empty($SSH_TTY)
+    call system('pbcopy', a:text)
+  else
+    let l:b64 = system('base64 | tr -d "\n"', a:text)
+    let l:osc = "\e]52;c;" . l:b64 . "\x07"
+    call writefile([l:osc], '/dev/tty', 'b')
+  endif
+endfunction
+" \c: copy the visual selection to the clipboard
+vnoremap <leader>c y:call CopyToClipboard(@")<CR>
 " \c in normal mode: copy the current line
-nnoremap <leader>c yy:call system('pbcopy', @")<CR>
+nnoremap <leader>c yy:call CopyToClipboard(@")<CR>
 
 
 call plug#begin('~/.vim/plugged')
