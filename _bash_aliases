@@ -7,3 +7,5 @@ alias gst='git status'
 alias gs='git show'
 alias gp='git pull'
 alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias cpwd='pwd | tr -d "\n" | pbcopy'
+alias cdd='if [ -d ~/Desktop/git/dotfiles ]; then cd ~/Desktop/git/dotfiles; else cd ~/git/dotfiles; fi'
